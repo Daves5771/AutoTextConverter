@@ -1,0 +1,132 @@
+﻿<?xml version="1.0"?>
+<Searches>
+  <Search RegEx= "([A-Z|a-z]*(?i)tres?\b(?=\W))">
+    <Identifier>Case Insensitve - matches litre, theatres, centre</Identifier>
+    <FindColor>Teal</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
+      <PlugInFunction>none</PlugInFunction>
+      <PlugInFormatFunction>Convert_tre_to_ter_Word</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "centre -> center"/>
+  </Search>
+  <Search RegEx= "([A-Z|a-z]+[^AaCcWw]ise(d|s)?\b(?=\W))">
+    <Identifier>Case Insensitve - matches apologise, organises, recognise</Identifier>
+    <FindColor>Blue</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
+      <PlugInFunction>none</PlugInFunction>
+      <PlugInFormatFunction>Convert_ise_to_ize_Word</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "apologise -> apologize"/>
+  </Search>
+  <Search RegEx= "([A-Z|a-z]*(?i)isations?\b(?=\W))">
+    <Identifier>Case Insensitve - matches canonisation, organisations, recognisation</Identifier>
+    <FindColor>Auto</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
+      <PlugInFunction>none</PlugInFunction>
+      <PlugInFormatFunction>Convert_isation_to_ization_Word</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "organisation -> organization"/>
+  </Search>
+  <Search RegEx= "([A-Z|a-z]+ours?\b(?=\W))">
+    <Identifier>Case Insensitve - matches colour, not flour</Identifier>
+    <FindColor>Green</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
+      <PlugInFunction>Validate_OUR_WORD</PlugInFunction>
+      <PlugInFormatFunction>Convert_our_to_or_Word</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "colour -> color"/>
+  </Search>
+  <Search RegEx= "([A-Z|a-z]+(y)se(s|ed)?\b(?=\W))">
+    <Identifier>Case Insensitve - matches analyse, paralyse, catalyse</Identifier>
+    <FindColor>Orange</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>none</PlugInName>
+      <PlugInFunction>none</PlugInFunction>
+      <PlugInFormatFunction>none</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= " IMPanalyse -> analyze"/>
+  </Search>
+  <Search RegEx= "[A-Z|a-z]*(?i)ammes?\b(?=\W)">
+    <Identifier>Case Insensitve - matches programme, kilogrammes, milligramme</Identifier>
+    <FindColor>Brown</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
+      <PlugInFunction>none</PlugInFunction>
+      <PlugInFormatFunction>Convert_amme_to_am_Word</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "programme -> program"/>
+  </Search>
+  <Search RegEx= "(?i)(defence|offence|pretence)s?">
+    <Identifier>Case Insensitve - matches defence, licence, offence</Identifier>
+    <FindColor>Brown</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
+      <PlugInFunction>none</PlugInFunction>
+      <PlugInFormatFunction>Convert_ence_to_ense_Word</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "defence -> defense"/>
+  </Search>
+  <Search RegEx= "([A-Z|a-z]*(?i)ogues?\b(?=\W))">
+    <Identifier>Case Insensitve - matches catalogue, dialogue, analogue</Identifier>
+    <FindColor>Brown</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
+      <PlugInFunction>none</PlugInFunction>
+      <PlugInFormatFunction>Convert_logue_to_log_Word</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "catalogue -> catalog"/>
+  </Search>
+  <Search RegEx= "(([1-9]|([1-2][1-9])|(3[0-1]))[ ](January|February|March|April|May|June|July|August|September|October|November|December)([ ,][1-2][0-9][0-9][0-9])?)">
+    <Identifier>URL</Identifier>
+    <FindColor>Brown</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
+      <PlugInFunction>none</PlugInFunction>
+      <PlugInFormatFunction>Convert_UK_DATE_to_US_DATE</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "2 January 2000 -> January 2, 2008"/>
+  </Search>
+</Searches>
+
+
+
