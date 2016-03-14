@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTextConverter", "AutoTextConverter\AutoTextConverter.csproj", "{02C4CCED-D53E-4906-9ED9-5548F8B2185F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UK_TO_US_EnglishConverter", "UK_TO_US_EnglishConverter\UK_TO_US_EnglishConverter.csproj", "{A794D874-1F78-4631-BE38-4B8F34F6530E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumericDateValidator", "NumericDateValidator\NumericDateValidator.csproj", "{DFE8101E-865F-4E17-8940-27F75E0CE001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSN_Validator", "SSN_Validator\SSN_Validator.csproj", "{1CDF2578-0063-4322-855F-936822E9EE69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02C4CCED-D53E-4906-9ED9-5548F8B2185F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02C4CCED-D53E-4906-9ED9-5548F8B2185F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02C4CCED-D53E-4906-9ED9-5548F8B2185F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02C4CCED-D53E-4906-9ED9-5548F8B2185F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A794D874-1F78-4631-BE38-4B8F34F6530E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A794D874-1F78-4631-BE38-4B8F34F6530E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A794D874-1F78-4631-BE38-4B8F34F6530E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A794D874-1F78-4631-BE38-4B8F34F6530E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE8101E-865F-4E17-8940-27F75E0CE001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE8101E-865F-4E17-8940-27F75E0CE001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE8101E-865F-4E17-8940-27F75E0CE001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE8101E-865F-4E17-8940-27F75E0CE001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CDF2578-0063-4322-855F-936822E9EE69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CDF2578-0063-4322-855F-936822E9EE69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CDF2578-0063-4322-855F-936822E9EE69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CDF2578-0063-4322-855F-936822E9EE69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
