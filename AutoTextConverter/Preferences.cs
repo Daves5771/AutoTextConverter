@@ -22,33 +22,10 @@ namespace SaelSoft.AutoTextConverter
 
         private void Preferences_Load(object sender, EventArgs e)
         {
-            string sAttr = ""; 
-            try
-            {
-                sAttr = ReadSetting("UseColors");
-
-                if (sAttr == "Not Found")
-                {
-                    AddUpdateAppSettings("UseColors", "true");
-                    sAttr = "true";
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Cannot read config values!" + ex.Message);
-                sAttr = "true"; 
-            }
-
-            if (sAttr == "true")
-            {
-                UseColorization = true;
+            if (UseColorization == true)
                 checkBoxTextColorization.Checked = true;
-            }
             else
-            {
-                UseColorization = false;
-                checkBoxTextColorization.Checked = false;
-            }
+                checkBoxTextColorization.Checked = true;           
         }
 
         static void AddUpdateAppSettings(string key, string value)
@@ -74,6 +51,31 @@ namespace SaelSoft.AutoTextConverter
             }
         }
 
+        static public void ReadPreferences()
+        {
+            string sAttr = "";
+            try
+            {
+                sAttr = ReadSetting("UseColors");
+
+                if (sAttr == "Not Found")
+                {
+                    AddUpdateAppSettings("UseColors", "true");
+                    sAttr = "true";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cannot read config values!" + ex.Message);
+                sAttr = "true";
+            }
+
+            if (sAttr == "true")
+                UseColorization = true;
+            else
+                UseColorization = false;
+        }
+
         static string ReadSetting(string key)
         {
             try
@@ -89,7 +91,7 @@ namespace SaelSoft.AutoTextConverter
             }
         }
 
-        static void ReadAllSettings()
+        static public void ReadAllSettings()
         {
             try
             {
