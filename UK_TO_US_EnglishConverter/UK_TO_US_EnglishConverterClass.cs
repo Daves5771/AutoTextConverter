@@ -53,6 +53,7 @@ namespace UK_TO_US_EnglishConverter
 
         public bool Validate_OUR_WORD(Match matchResult)
         {
+            // http://www.morewords.com/contains/our/
             // check with word table
             string candidate = matchResult.Groups[0].ToString().ToLower();
 
