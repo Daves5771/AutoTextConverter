@@ -13,15 +13,12 @@ namespace SaelSoft.AutoTextConverter
     public delegate void DelegateOpenDocEvent(string docName);
     // supported export formats
     public enum ExportFormats { efText, efExcel }
+    public enum Mode {AutoProcess, StepProcess, FileLoaded, NoFile }
 
     public partial class MainForm : Form
     {
-        public DocumentEngine docEngine;
-        List<SearchStruct> SearchCollection;
-        List<SearchStruct> SearchandReplaceCollection;
-
+        private MainViewModel viewModel;
         ColorCheckedListBox currentListBox;
-        List<SearchStruct> currentSearchCollection;
 
         const string AppTitle = "Auto Text Converter";
 
@@ -38,34 +35,18 @@ namespace SaelSoft.AutoTextConverter
         // for future use
         public DelegateOpenDocEvent OpenDocumentEvent;
 
-        // stop search variable
-        private bool stopSearch = false;
-
         // Primary Interop Assemblies Installed variable
         private bool piasInstalled = true;
 
         // sets default path for loading test documents (sample docs dir)
         private string documentPath = "";
 
-        //step mode
-        private static ManualResetEvent stepevent = new ManualResetEvent(true);
-        private bool stepMode = false;
-
-        //step mode
-        private static ManualResetEvent pauseEvent = new ManualResetEvent(true);
+        // processing
+        private bool isProcessing = false;
 
         RegExListForm relf = new RegExListForm();
 
-
-        public void OnStepPauseClick()
-        {
-            stepevent.Reset();
-        }
-
-        public void OnStepResumeClick()
-        {
-            stepevent.Set();
-        }
+        int[] checkedIndecieArray;
 
         void EnableControls(bool enable)
         {
@@ -79,19 +60,18 @@ namespace SaelSoft.AutoTextConverter
             InitializeComponent();
             try
             {
-                docEngine = new DocumentEngine();
+                // initialize the view model
+                viewModel = new MainViewModel(this);
             }
             catch
             {
+                // changes are the pia for word is not installed
                 piasInstalled = false;
             }
 
-            SearchCollection = new List<SearchStruct>();
-            SearchandReplaceCollection = new List<SearchStruct>();
-
             // load choices into list box
             List<string> choiceNames = new List<string>();
-            docEngine.GetListofChoices(ref choiceNames);
+            viewModel.GetListofChoices(ref choiceNames);
             foreach (string c in choiceNames)
                 conversionsComboBox.Items.Add(c);
 
@@ -126,10 +106,10 @@ namespace SaelSoft.AutoTextConverter
         // RegEx list box with all search optons from XML
         public void LoadRegExListBox()
         {
-            foreach (SearchStruct searchItem in SearchCollection)
+            foreach (SearchStruct searchItem in viewModel.SearchCollection)
             {
                 relf.Add(searchItem, true,
-                    docEngine.ConvertSearchToSystemColor(searchItem.TextColor));
+                    viewModel.ConvertSearchToSystemColor(searchItem.TextColor));
             }
         }
 
@@ -169,20 +149,21 @@ namespace SaelSoft.AutoTextConverter
         {
             try
             {
-                docEngine.CloseDocument();
-                this.Text = AppTitle;
-                btnFind.Enabled = true;
+                viewModel.CloseDocument();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+            this.Text = AppTitle;
+            NoFileLoaded();
         }
 
         // saves the document
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            docEngine.SaveDocument();
+            viewModel.SaveDocument();
         }
 
         // presents a save document dialog before saving document
@@ -194,7 +175,7 @@ namespace SaelSoft.AutoTextConverter
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                docEngine.SaveAsDocument(saveFileDialog1.FileName);
+                viewModel.SaveAsDocument(saveFileDialog1.FileName);
             }
         }
 
@@ -222,11 +203,29 @@ namespace SaelSoft.AutoTextConverter
                 statusListView.Items[statusListView.Items.Count - 1].SubItems[3].Text = "Replaced";
 
             statusListView.EnsureVisible(statusListView.Items.Count - 1);
+
+            if (viewModel.StepMode)
+                btnStep.Enabled = true;
         }
 
         // perform a search
         private void btnFind_Click(object sender, EventArgs e)
         {
+            // cant do step mode while auto processing
+            btnFind.Enabled = false;
+            btnStep.Enabled = false;
+            btnPause.Enabled = true;
+
+            viewModel.CommandExecute(Commands.Process);
+ 
+            if (!isProcessing)
+                StartProcessing(); 
+        }
+
+        private void StartProcessing()
+        {
+            isProcessing = true;
+
             if (relf.CheckedIndicesCount == 0)
             {
                 MessageBox.Show("You must select a Regular Expression to search for", "Warning",
@@ -234,15 +233,23 @@ namespace SaelSoft.AutoTextConverter
                 return;
             }
 
+            btnStep.Enabled = false;
             btnFind.Enabled = false;
             btnStop.Enabled = true;
             btnPause.Enabled = true;
 
-            stepevent.Set();
-            pauseEvent.Set();
+ ///           stepevent.Set();
+ ///           pauseEvent.Set();
             toolStripStatusLabel1.Text = "Search started";
-            toolStripNumParLabel.Text = "Num of Paragraphs: " +docEngine.ParagraphCount.ToString();
-            backgroundWorker1.RunWorkerAsync();
+            toolStripNumParLabel.Text = "Num of Paragraphs: " + viewModel.ParagraphCount.ToString();
+
+            checkedIndecieArray = new int[currentListBox.CheckedIndices.Count];
+            foreach (int index in currentListBox.CheckedIndices)
+                checkedIndecieArray[index] = currentListBox.CheckedIndices[index];
+
+            viewModel.CheckedIndices = checkedIndecieArray;
+
+            viewModel.StartProcessing();
         }
 
         // clear the list view
@@ -265,19 +272,18 @@ namespace SaelSoft.AutoTextConverter
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            stopSearch = true;
-            stepMode = false;
-
-            // if we are paused or in step mode signal the event(s) to proceed
-            pauseEvent.Set();
-            stepevent.Set();
+            viewModel.CommandExecute(Commands.Stop);
         }
 
         private void btnStep_Click(object sender, EventArgs e)
         {
             // signal that we can continue
-            stepMode = true;
-            stepevent.Set();
+            btnStep.Enabled = false;
+            btnFind.Enabled = false;
+            viewModel.CommandExecute(Commands.Step);
+
+            if (!isProcessing)
+                StartProcessing(); 
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -286,91 +292,31 @@ namespace SaelSoft.AutoTextConverter
             {
                 btnPause.Text = "Resume";
                 // pause processing
-                pauseEvent.Reset();
+                btnFind.Enabled = true;
+                btnStep.Enabled = true;
+                viewModel.CommandExecute(Commands.PausePause);
             }
 
             else if (btnPause.Text == "Resume")
             {
                 btnPause.Text = "Pause";
                 // continue processing
-                pauseEvent.Set();
+                viewModel.CommandExecute(Commands.PausePause);
             }
         }
 
-        // work thread that performs the search
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            string docText ="";
-            List<HitInfo> hits;
-            hits = new List<HitInfo>();
-            // number of paragraphs in the document
-            int paraCount = docEngine.ParagraphCount;
-
-            // decide if found items will be selected
-            docEngine.HilightText = true;
-
-            // loop through each paragraph
-            // note: Word interopt works on 1 based indexing meaning that the first
-            // paragraph starts at 1 and not 0
-            for (int currentParaNum = 1; currentParaNum <= paraCount; currentParaNum++)
-            {
-                Invoke(UpdateCurrParaNum, (object)currentParaNum.ToString());
-                if (stepMode)
-                    stepevent.WaitOne();
-
-                foreach (int index in currentListBox.CheckedIndices)
-                {
-                    // convert the text in the MS Office document into a .NET string
-                      docText = docEngine.GetRng(currentParaNum).Text;
-
-                    // do the search on the paragraph of text
-                    try
-                    {
-                        docEngine.RegularExpressionFind(currentParaNum, docText, currentSearchCollection[index], index, out hits);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                        break;
-                    }
-
-                    // update the GUI if we have any hits
-                    foreach (HitInfo hit in hits)
-                    {
-                        object[] invokeParams = new object[2];
-                        invokeParams[0] = currentParaNum;
-                        invokeParams[1] = hit;
-                        Invoke(UpdateStatusListView, invokeParams);
-
-                        // if we are stepping then pause the thread at the beginning of the loop
-                        if (stepMode)
-                            stepevent.Reset();
-                    }
-
-                    // stop searhing if user pressed stop
-                    if (stopSearch)
-                        return;
-
-                    // if the user pressed pause wait hear until resume is pressed
-                    pauseEvent.WaitOne();
-                }
-            }
-        }
-
-        // search completed
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        public void ProcessingCompleted(bool stopSearch)
         {
             btnFind.Enabled = true;
             btnStop.Enabled = false;
             btnPause.Enabled = false;
-            btnStep.Enabled = false;
-
+            btnStep.Enabled = true;
 
             if (stopSearch)
                 toolStripStatusLabel1.Text = "Search terminated by user";
             else
                 toolStripStatusLabel1.Text = "Search completed";
+            isProcessing = false;
         }
 
         private void statusListView_DoubleClick(object sender, EventArgs e)
@@ -379,13 +325,13 @@ namespace SaelSoft.AutoTextConverter
                 return;
             ListViewItem item = statusListView.SelectedItems[0];
             HitInfo hitInfo = (HitInfo)item.Tag;
-            docEngine.FindTextInRange(hitInfo);
+            viewModel.FindTextInRange(hitInfo);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (piasInstalled)
-                docEngine.CloseDocEngine();
+                viewModel.CloseDocEngine();
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -412,16 +358,16 @@ namespace SaelSoft.AutoTextConverter
         {
             // default is to show search list box
             /// daves           regExCheckedListBoxReplace.Visible = false;
+            NoFileLoaded();
+            currentListBox = relf.XmlCheckedListBox;
+        }
 
-            // Daves TODO will fix the step function in the next version
-            btnStep.Visible = false;
-
+        private void NoFileLoaded()
+        {
             btnFind.Enabled = false;
             btnPause.Enabled = false;
             btnStop.Enabled = false;
-
-            currentListBox = relf.XmlCheckedListBox;
-            currentSearchCollection = SearchCollection;
+            btnStep.Enabled = false;
         }
 
         private void MainForm_DragEnter(object sender, DragEventArgs e)
@@ -455,13 +401,13 @@ namespace SaelSoft.AutoTextConverter
         {
             try
             {
-                docEngine.OpenDocument(fileName);
+                viewModel.OpenDocument(fileName);
                 this.Text = AppTitle + " - " + Path.GetFileName(fileName);
                 btnFind.Enabled = true;
                 btnPause.Enabled = false;
                 btnStep.Enabled = true;
                 toolStripStatusLabel1.Text = "Ready";
-                toolStripNumParLabel.Text = "Num of Paragraphs: " + docEngine.ParagraphCount.ToString();
+                toolStripNumParLabel.Text = "Num of Paragraphs: " + viewModel.ParagraphCount.ToString();
             }
             catch (Exception ex)
             {
@@ -501,7 +447,7 @@ namespace SaelSoft.AutoTextConverter
             int selItemIndex = statusListView.SelectedIndices[0];
             HitInfo hitInfo = (HitInfo)item.Tag;
             int delta = hitInfo.Text.Length - hitInfo.ReplaceText.Length;
-            docEngine.Commit(ref hitInfo);
+            viewModel.Commit(ref hitInfo);
             statusListView.Items[selItemIndex].SubItems[0].ForeColor = Color.Black;
             statusListView.Items[selItemIndex].SubItems[3].Text = "Cmmitted";
         }
@@ -512,7 +458,7 @@ namespace SaelSoft.AutoTextConverter
             int selItemIndex = statusListView.SelectedIndices[0];
             HitInfo hitInfo = (HitInfo)item.Tag;
             int delta = hitInfo.Text.Length - hitInfo.ReplaceText.Length;
-            docEngine.Revert(ref hitInfo);
+            viewModel.Revert(ref hitInfo);
             statusListView.Items[selItemIndex].SubItems[0].ForeColor = Color.Magenta;
             statusListView.Items[selItemIndex].SubItems[2].Text = hitInfo.Text;
             statusListView.Items[selItemIndex].SubItems[3].Text = "Reverted";
@@ -522,12 +468,12 @@ namespace SaelSoft.AutoTextConverter
         {
             if (conversionsComboBox.SelectedIndex == -1)
                 return;
-            docEngine.LoadSearchEntries((string)conversionsComboBox.Items[conversionsComboBox.SelectedIndex], currentSearchCollection);
+            viewModel.LoadSearchEntries((string)conversionsComboBox.Items[conversionsComboBox.SelectedIndex]);
             relf.Clear();
-            foreach (SearchStruct searchItem in SearchCollection)
+            foreach (SearchStruct searchItem in viewModel.SearchCollection)
             {
                 relf.Add(searchItem.Description, true,
-                    docEngine.ConvertSearchToSystemColor(searchItem.TextColor));
+                    viewModel.ConvertSearchToSystemColor(searchItem.TextColor));
             }
 
             relf.SetXmlName((string)conversionsComboBox.Items[conversionsComboBox.SelectedIndex]);
@@ -551,7 +497,7 @@ namespace SaelSoft.AutoTextConverter
             {
                 HitInfo hitInfo = (HitInfo)item.Tag;
                 int delta = hitInfo.Text.Length - hitInfo.ReplaceText.Length;
-                docEngine.Commit(ref hitInfo);
+                viewModel.Commit(ref hitInfo);
                 item.SubItems[0].ForeColor = Color.Black;
                 item.SubItems[3].Text = "Cmmitted";
             }
@@ -567,9 +513,7 @@ namespace SaelSoft.AutoTextConverter
             HitInfo hitInfo = (HitInfo)item.Tag;
             if (hitInfo.committed || hitInfo.searchMode == SearchMode.FindOnly)
                 foreach (ToolStripItem menuItem in resultsContextMenu.Items)
-                {
                     menuItem.Enabled = false;
-                }
         }
 
         private void searchListToolStripMenuItem_Click(object sender, EventArgs e)
@@ -640,6 +584,12 @@ namespace SaelSoft.AutoTextConverter
         private void searcAndReplacementsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ExportFile(ExportFormats.efExcel);
+        }
+
+        private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Preferences pref = new Preferences();
+            pref.ShowDialog();
         }
     }
 }

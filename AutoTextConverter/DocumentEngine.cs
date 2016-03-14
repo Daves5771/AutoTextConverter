@@ -70,6 +70,16 @@ namespace SaelSoft.AutoTextConverter
             get{ return theDoc.Name;}
         }
 
+        public bool DocExists()
+        {
+            return (!(theDoc == null));
+        }
+
+        public bool AppExists()
+        {
+            return (!(app == null));
+        }
+
         public void LoadSearchEntries(string searchName, List<SearchStruct> searches)
         {
             xmlMod.LoadSearchEntries(searchName, searches);
@@ -280,7 +290,8 @@ namespace SaelSoft.AutoTextConverter
                 // save the original color
                 originalTextColor = rngDoc.Font.Color;
 
-                rngDoc.Font.Color = color;
+                if (Preferences.UseColorization)
+                    rngDoc.Font.Color = color;
                 // the range endpoint will change if we modified the text
                 return true;
             }
@@ -335,7 +346,8 @@ namespace SaelSoft.AutoTextConverter
             rngDoc.Text = hitInfo.Text;
 
             // this is temporarly hardcoded
-            rngDoc.Font.Color = Microsoft.Office.Interop.Word.WdColor.wdColorPink;
+            if (Preferences.UseColorization)
+                rngDoc.Font.Color = Microsoft.Office.Interop.Word.WdColor.wdColorPink;
 
             app.Activate();
         }
@@ -562,9 +574,13 @@ namespace SaelSoft.AutoTextConverter
             {
                  case "Aqua":
                     return Word.WdColor.wdColorAqua;
-                 case "Blue":
+                case "Auto":
+                    return Word.WdColor.wdColorAutomatic;
+                case "Black":
+                    return Word.WdColor.wdColorBlack;
+                case "Blue":
                     return Word.WdColor.wdColorBlue;
-                 case "Brown":
+                case "Brown":
                     return Word.WdColor.wdColorBrown;
                  case "BrightGreen":
                     return Word.WdColor.wdColorBrightGreen;
@@ -608,7 +624,7 @@ namespace SaelSoft.AutoTextConverter
                     return Word.WdColor.wdColorYellow;
                case "BlueGray":
                     return Word.WdColor.wdColorBlueGray;
-               default:
+                default:
                     return Word.WdColor.wdColorRed;
             }
         }
@@ -618,8 +634,12 @@ namespace SaelSoft.AutoTextConverter
         {
             switch(colorStr)
             {
+                case "Auto":
+                    return System.Drawing.Color.Black;
                 case "Aqua":
                     return System.Drawing.Color.Aqua;
+                case "Black":
+                    return System.Drawing.Color.Black;
                 case "Blue":
                     return System.Drawing.Color.Blue;
                 case "Brown":

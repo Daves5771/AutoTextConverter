@@ -74,11 +74,19 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox24 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.textBox24);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label20);
@@ -125,7 +133,7 @@
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Location = new System.Drawing.Point(21, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(402, 316);
+            this.groupBox1.Size = new System.Drawing.Size(402, 346);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Supported Display Colors";
@@ -506,7 +514,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(197, 346);
+            this.button1.Location = new System.Drawing.Point(197, 376);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -514,13 +522,50 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(234, 308);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(34, 13);
+            this.label23.TabIndex = 48;
+            this.label23.Text = "Black";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(20, 311);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(29, 13);
+            this.label24.TabIndex = 47;
+            this.label24.Text = "Auto";
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.LightGray;
+            this.textBox6.Location = new System.Drawing.Point(105, 309);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(84, 20);
+            this.textBox6.TabIndex = 46;
+            this.textBox6.Text = "default text color";
+            // 
+            // textBox24
+            // 
+            this.textBox24.BackColor = System.Drawing.Color.Black;
+            this.textBox24.Location = new System.Drawing.Point(302, 309);
+            this.textBox24.Name = "textBox24";
+            this.textBox24.Size = new System.Drawing.Size(84, 20);
+            this.textBox24.TabIndex = 45;
+            // 
             // SupportedColorsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 377);
+            this.ClientSize = new System.Drawing.Size(435, 410);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SupportedColorsForm";
             this.Text = "SupportedColorsForm";
             this.groupBox1.ResumeLayout(false);
@@ -577,5 +622,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox24;
     }
 }

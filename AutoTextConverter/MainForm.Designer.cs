@@ -39,11 +39,11 @@
             this.conversionsComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnFind = new System.Windows.Forms.ToolStripButton();
-            this.btnStop = new System.Windows.Forms.ToolStripButton();
             this.btnPause = new System.Windows.Forms.ToolStripButton();
+            this.btnStop = new System.Windows.Forms.ToolStripButton();
+            this.btnStep = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClear = new System.Windows.Forms.ToolStripButton();
-            this.btnStep = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripNumParLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -57,7 +57,6 @@
             this.revertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +76,7 @@
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
@@ -84,6 +84,8 @@
             this.commitAllChangesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.resultsContextMenu.SuspendLayout();
@@ -101,11 +103,11 @@
             this.conversionsComboBox,
             this.toolStripSeparator1,
             this.btnFind,
-            this.btnStop,
             this.btnPause,
+            this.btnStop,
+            this.btnStep,
             this.toolStripSeparator6,
-            this.btnClear,
-            this.btnStep});
+            this.btnClear});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(676, 25);
@@ -174,6 +176,16 @@
             this.btnFind.Text = "btnFind";
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
+            // btnPause
+            // 
+            this.btnPause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPause.Image = ((System.Drawing.Image)(resources.GetObject("btnPause.Image")));
+            this.btnPause.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(23, 22);
+            this.btnPause.Text = "Pause";
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+            // 
             // btnStop
             // 
             this.btnStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -184,15 +196,16 @@
             this.btnStop.Text = "btnStop";
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // btnPause
+            // btnStep
             // 
-            this.btnPause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnPause.Image = ((System.Drawing.Image)(resources.GetObject("btnPause.Image")));
-            this.btnPause.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(23, 22);
-            this.btnPause.Text = "Pause";
-            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+            this.btnStep.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnStep.Image = ((System.Drawing.Image)(resources.GetObject("btnStep.Image")));
+            this.btnStep.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStep.Name = "btnStep";
+            this.btnStep.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnStep.Size = new System.Drawing.Size(23, 22);
+            this.btnStep.Text = "Step";
+            this.btnStep.Click += new System.EventHandler(this.btnStep_Click);
             // 
             // toolStripSeparator6
             // 
@@ -209,17 +222,6 @@
             this.btnClear.Text = "Clear";
             this.btnClear.ToolTipText = "Clear List View";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnStep
-            // 
-            this.btnStep.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnStep.Image = ((System.Drawing.Image)(resources.GetObject("btnStep.Image")));
-            this.btnStep.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnStep.Name = "btnStep";
-            this.btnStep.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnStep.Size = new System.Drawing.Size(23, 22);
-            this.btnStep.Text = "Step";
-            this.btnStep.Click += new System.EventHandler(this.btnStep_Click);
             // 
             // statusStrip1
             // 
@@ -278,7 +280,7 @@
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Status";
+            this.columnHeader4.Text = "Action";
             this.columnHeader4.Width = 100;
             // 
             // resultsContextMenu
@@ -307,11 +309,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // menuStrip1
             // 
@@ -438,11 +435,14 @@
             this.processToolStripMenuItem,
             this.pauseToolStripMenuItem,
             this.stopToolStripMenuItem,
+            this.stepToolStripMenuItem,
             this.toolStripSeparator3,
             this.clearToolStripMenuItem,
             this.toolStripSeparator7,
             this.testRegularExpressionToolStripMenuItem,
-            this.commitAllChangesToolStripMenuItem});
+            this.commitAllChangesToolStripMenuItem,
+            this.toolStripSeparator8,
+            this.preferencesToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -473,6 +473,15 @@
             this.stopToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // stepToolStripMenuItem
+            // 
+            this.stepToolStripMenuItem.Image = global::SaelSoft.AutoTextConverter.Properties.Resources.Retry;
+            this.stepToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Fuchsia;
+            this.stepToolStripMenuItem.Name = "stepToolStripMenuItem";
+            this.stepToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.stepToolStripMenuItem.Text = "Step";
+            this.stepToolStripMenuItem.Click += new System.EventHandler(this.btnStep_Click);
             // 
             // toolStripSeparator3
             // 
@@ -522,6 +531,18 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(206, 6);
+            // 
+            // preferencesToolStripMenuItem
+            // 
+            this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.preferencesToolStripMenuItem.Text = "Preferences ...";
+            this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -570,7 +591,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ToolStripButton btnPause;
         private System.Windows.Forms.ToolStripButton btnStep;
         private System.Windows.Forms.ContextMenuStrip resultsContextMenu;
@@ -609,6 +629,9 @@
         private System.Windows.Forms.ToolStripButton btnClear;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem stepToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
     }
 }
 
