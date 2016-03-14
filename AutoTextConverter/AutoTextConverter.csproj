@@ -7,7 +7,7 @@
     <ProjectGuid>{02C4CCED-D53E-4906-9ED9-5548F8B2185F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AutoTextConverter</RootNamespace>
+    <RootNamespace>SaelSoft.AutoTextConverter</RootNamespace>
     <AssemblyName>AutoTextConverter</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,6 +41,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,6 +62,7 @@
     <Compile Include="ColorCheckedListBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Commands.cs" />
     <Compile Include="DocumentEngine.cs" />
     <Compile Include="EntryViewerForm.cs">
       <SubType>Form</SubType>
@@ -74,11 +76,23 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainViewModel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MainViewModel.Designer.cs">
+      <DependentUpon>MainViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="MissingPIAForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MissingPIAForm.Designer.cs">
       <DependentUpon>MissingPIAForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Preferences.Designer.cs">
+      <DependentUpon>Preferences.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,8 +124,14 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainViewModel.resx">
+      <DependentUpon>MainViewModel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MissingPIAForm.resx">
       <DependentUpon>MissingPIAForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences.resx">
+      <DependentUpon>Preferences.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -146,6 +166,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\Retry.bmp" />
     <Content Include="UtilityText.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
