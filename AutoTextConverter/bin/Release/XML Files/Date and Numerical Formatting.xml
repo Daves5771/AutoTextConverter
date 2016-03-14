@@ -1,0 +1,130 @@
+﻿<?xml version="1.0"?>
+<Searches>
+  <Header>
+    <Product>TextFilter</Product>
+    <ProfileOwner>David Saelman</ProfileOwner>
+    <CreationDate>April 20, 2012</CreationDate>
+    <ProfileVersion>1.0</ProfileVersion>
+    <ProfileDescription>Basic tests for testing FUSION STBs 1=live viewing 2=tuning 3=record</ProfileDescription>
+    <ProfileHistory />
+  </Header>
+  <Search RegEx="[01]?[-\u2013 .]?(\([2-9]\d{2}\)|[2-9]\d{2})[-\u2013 .]?\d{3}[-\u2013 .]?\d{4}">
+    <Identifier>US Phone Number</Identifier>
+    <FindColor>Orange</FindColor>
+    <Action>find</Action>
+    <Plugin></Plugin>
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "Phone number"/>
+  </Search>
+  <Search RegEx= "(0[1-9]|1[012])[-\u2013/.](0[1-9]|[12][0-9]|3[01])[-\u2013/.]((19|20)\d\d)">
+    <Identifier>URL</Identifier>
+    <FindColor>Teal</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>NumericDateValidator.dll</PlugInName>
+      <PlugInFunction>ValidateUSDate</PlugInFunction>
+      <PlugInFormatFunction>GetDateMatch_1</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>    
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "01/02/2008 -> January 2, 2008"/>  
+  </Search>
+  <Search RegEx= "(January|February|March|April|May|June|July|August|September|October|November|December)[ ](0[1-9]|1[012])[,]((19|20)\d\d)">
+    <Identifier>URL</Identifier>
+    <FindColor>Brown</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>NumericDateValidator.dll</PlugInName>
+      <PlugInFunction>ValidateUSDate</PlugInFunction>
+      <PlugInFormatFunction>GetDateMatch_3</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "01/02/2008 -> 2 January 2008"/>  
+ </Search>
+  <Search RegEx= "(0[1-9]|1[012])[-\u2013/.](0[1-9]|[12][0-9]|3[01])[-\u2013/.]((19|20)\d\d)">
+    <Identifier>URL</Identifier>
+    <FindColor>Brown</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>NumericDateValidator.dll</PlugInName>
+      <PlugInFunction>ValidateUSDate</PlugInFunction>
+      <PlugInFormatFunction>GetDateMatch_2</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>    
+    <Resrved1/>
+    <Resrved2/>
+    <Description Text= "01/02/2008 -> 2 January 2008"/>
+</Search>
+  <Search RegEx="\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b">
+    <Identifier>IP Address</Identifier>
+    <FindColor>Indigo</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>NumericDateValidator.dll</PlugInName>
+      <PlugInFunction>ValidateUSDate</PlugInFunction>
+      <PlugInFormatFunction>GetDateMatch_2</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>  
+    <Description Text= "02.01.2008 -> January 2, 2008"/>
+  </Search>
+  <Search RegEx="(0[1-9]|[12][0-9]|3[01])[-\u2013/ /.](0[1-9]|1[012])[-\u2013/ /.]((19|20)\d\d)">
+    <Identifier>NumericalDate</Identifier>
+    <FindColor>Green</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>NumericDateValidator.dll</PlugInName>
+      <PlugInFunction>ValidateEuropeanDate</PlugInFunction>
+      <PlugInFormatFunction>none</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>  
+    <Description Text= "01/02/2008 -> 2 January 2008"/>
+  </Search>
+  <Search RegEx="(0[1-9]|1[012])[-\u2013/.](0[1-9]|[12][0-9]|3[01])[-\u2013/.]((19|20)\d\d)">
+    <Identifier>NumericalDate</Identifier>
+    <FindColor>Blue</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>NumericDateValidator.dll</PlugInName>
+      <PlugInFunction>ValidateUSDate</PlugInFunction>
+      <PlugInFormatFunction>GetDateMatch_1</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>
+    <Resrved1/>
+    <Resrved2/>  
+    <Description Text= "US format Date mm/dd/year"/>
+  </Search>
+  <Search RegEx="([0-6]\d{2}|7[0-6]\d|77[0-2])([ \-]?)(\d{2})\2(\d{4})">
+    <Identifier>Social Security Number</Identifier>
+    <FindColor>Brown</FindColor>
+    <Action>replace</Action>
+    <Plugin Description="yes">
+      <PlugInName>SSN_Validator.dll</PlugInName>
+      <PlugInFunction>ValidateSSN</PlugInFunction>
+      <PlugInFormatFunction>GetSSNMatch</PlugInFormatFunction>
+      <Reserved>0</Reserved>
+    </Plugin>    
+    <Resrved1/>
+    <Resrved2/>  
+    <Description Text= "Social Security Number"/>
+  </Search>
+  <Search RegEx="\b[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b">
+    <Identifier>Email</Identifier>
+    <FindColor>Purple</FindColor>
+    <Action>find</Action>
+    <Plugin></Plugin>
+    <Resrved1/>
+    <Resrved2/>  
+    <Description Text= "Email"/>
+  </Search>
+</Searches>
+
+
+
