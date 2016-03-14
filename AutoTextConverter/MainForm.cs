@@ -346,6 +346,9 @@ namespace SaelSoft.AutoTextConverter
 
             if (conversionsComboBox.Items.Count > 0)
                 conversionsComboBox.SelectedIndex = 0;
+
+            Preferences.ReadPreferences();
+
         }
 
         private void installMSOfficePIAToolStripMenuItem_Click(object sender, EventArgs e)
