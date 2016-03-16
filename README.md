@@ -39,7 +39,7 @@ The following must be present on your PC in order to run the application:
 
 Overview
 
-Below is a picture of the main application GUI:
+Below is a picture of the main application GUI after a sample run:
 
 ![Alt text](ScreenShots/Fig1.PNG  "Figure 1 Sample GUI")
 
