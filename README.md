@@ -1,9 +1,10 @@
 # AutoTextConverter
 Auto Text Converter Source Code
 
-1.	Introduction
+Introduction
 
 1.1	Purpose 
+
 The Auto Text Converter is a powerful search-and-replace tool for Microsoft Word Documents. It utilizes regular expressions, a feature missing in standard MS Office installations, as the heart of its search-and-replace engine.
 With this application one can accomplish such tasks as capturing all of the URLs in a document, converting words of British spelling 
 into their American equivalents and vice-versa. The application comes with  number of pluggins for text validation and replacements.
@@ -11,6 +12,7 @@ New plugins can be written and added to the plugins directory.
 The search and replace abilities are only limited by one’s imagination.
   
 1.2	Key Features
+
 This document is intended for developers 
 •	Automated or manual controlled searching and or text replacements.
 •	Exporting the list of searched entries to a text or EXCEL file.
@@ -21,6 +23,7 @@ This document is intended for developers
 •	And many more options.
 
 1.3	Requirements
+
 Before running the application please read, understand, and agree to the following:
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE SaelSoft or David Saelman BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -34,7 +37,7 @@ The following must be present on your PC in order to run the application:
 •	Microsoft WORD 2007, 2010, 2013, 2016
 
 
-2.	Overview
+Overview
 
 Below is a picture of the main application GUI:
 
@@ -54,7 +57,7 @@ Step button
 Clear the Listview button
 
 
-3.	Operation
+Operation
 
 3.1	Running the Application
 
