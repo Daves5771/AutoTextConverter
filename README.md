@@ -68,7 +68,7 @@ After starting the application, the user can choose one of several search profil
 
 One can process the file in one of two mode: (1) Process mode, which will process the entire file automatically. (2) Step mode, which will stop at each change. The user then needs to hit the step button again and the program will proceed until the next change.  The user can change modes simply by pressing the <Pause> button and pressing the mode of their choice.  
 
-Below is a screenshot of a processed WORD document"
+Below is a screenshot of a processed WORD document
 
 
 ![Alt text](ScreenShots/Fig2.PNG  "Figure 2 - Sample output")
