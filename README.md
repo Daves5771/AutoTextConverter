@@ -32,7 +32,11 @@ The following must be present on your PC in order to run the application:
 •	Microsoft WORD 2007, 2010, 2013, 2016
 
 2.	Overview
-Below is a picture of the main application GUI.
+Below is a picture of the main application GUI:
+
+![Alt text](ScreenShots/Fig1.PNG  "Figure 1 Sample GUI")
+
+
 The tool bar shows the following function buttons (from left to right)
 Open file
 Save file
@@ -44,7 +48,7 @@ Stop button
 Step button
 Clear the Listview button
 
-![Alt text](ScreenShots/Fig1.PNG  "Figure 1 Sample GUI")
+
 
 3.	Operation
 3.1	Running the Application
@@ -52,88 +56,9 @@ After starting the application, the user can choose one of several search profil
 
 
 3.2	Running Modes
-One can process the file in one of two mode: (1) Process mode, which will process the entire file automatically. (2) Step mode, which will stop at each change. The user then needs to hit the step button again and the program will proceed until the next change.  The user can change modes simply by pressing the <Pause> button and pressing the mode of their choice.
+One can process the file in one of two mode: (1) Process mode, which will process the entire file automatically. (2) Step mode, which will stop at each change. The user then needs to hit the step button again and the program will proceed until the next change.  The user can change modes simply by pressing the <Pause> button and pressing the mode of their choice.  Below is a screenshot of a processed WORD document"
 
 
 ![Alt text](ScreenShots/Fig2.PNG  "Figure 2 - Sample output")
 
-4.	Making Custom Searches and Replacements
-The user can create his own XML profiles for custom searches and replacements.  In this version, the user must manually create the XML file.  Existing files can be used as a template or starting point.  Below is a description of the XML format :
-
-4.1	Header block
-Gives general information about the XML file including version, owner and a description. The only required field is the ProfileVersion which should be set to 1.0
-
-4.2	Search sections
-Gives general information about the XML file including version, owner and a description.
-
-4.2.1	RegEx
-The regular expression. Note: one should first test the regular expression using the handy regular expression tester available from the Tools Menu.
-
-4.2.2	Identifier
-This field can be used for a private description of the section.
-
-4.2.3	FindColor
-The color the application will use for the text that will be searched for or replaced.  The list of colors which can be used can be accessed from the Tools Color Guide menu. In the future, one will be able to use the auto keyword if they do not wish to change the color of the text.
-
-4.2.4	Action
-If the action is defined as “find”, the engine will only perform a search but no replacement will be made. If the Action = “replace”, the text will be replaced.
-
-4.2.5	Plugin
-If the section supports a plugin, Plugin Description =”yes”, otherwise <Plugin></Plugin>
-
-4.2.5.1	PluginName 
-The name of the Plugin Assembly
-
-4.2.5.2	PluginValidationFunction (Optional)
-The name of the Plugin function to validate the input string.  For example, a numerical sting can be checked if it is a valid social security number or credit card number.
-
-4.2.5.3	PluginFormatFunction
-The Plugin function name that formats the input.
-
-4.2.5.4	Reserved
-Currently not used.
-
-4.2.6	Reserved1
-Currently not used
-
-4.2.7	Reserved2
-Currently not used
-
-4.2.8	Description
-The description used to identify what the regular expression will look for.  The description appears in the RegExListBox available from the View menu.
-4.3	XML Example
-Gives general information about the XML file including version, owner and a description.
-
-<Searches>
-  <Header>
-    <Product>Auto Text Converter by SaelSoft</Product>
-    <ProfileOwner>David Saelman</ProfileOwner>
-    <CreationDate>March 10, 2016</CreationDate>
-    <ProfileVersion>1.0</ProfileVersion>
-    <ProfileDescription>Converts dates and performs other numerical formatting</ProfileDescription>
-    <ProfileHistory />
-  </Header>
-  <Search RegEx= "(0[1-9]|1[012])[-\u2013/.](0[1-9]|[12][0-9]|3[01])[-\u2013/.]((19|20)\d\d)">
-    <Identifier>URL</Identifier>
-    <FindColor>Teal</FindColor>
-    <Action>replace</Action>
-    <Plugin Description="yes">
-      <PlugInName>NumericDateValidator.dll</PlugInName>
-      <PlugInValidationFunction>ValidateUSDate</PlugInValidationFunction>
-      <PlugInFormatFunction>GetDateMatch_1</PlugInFormatFunction>
-      <Reserved>0</Reserved>
-    </Plugin>    
-    <Resrved1/>
-    <Resrved2/>
-    <Description Text= "01/02/2008 -> January 2, 2008"/>  
-  </Search>
-</Searches>
-
-
-4.4	Header block
-Gives general information about the XML file including version, owner and a description.
-
-
-5.	Using the Examples
-The Auto Text Converter packages comes with several sample documents that you can try along with the sample XML profiles.
 
