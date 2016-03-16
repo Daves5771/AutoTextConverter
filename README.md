@@ -1,6 +1,6 @@
 # AutoTextConverter
 Auto Text Converter Source Code
-![Alt text](/ScreenShots/Fig1.png?raw=true "Figure 1")
+![Alt text](https://github.com/Daves5771/AutoTextConverter/tree/master/ScreenShots/Fig1.png?raw=true "Figure 1")
 ![Alt text](/ScreenShots/Fig2.png?raw=true "Figure 2")
 1.	Introduction
 1.1	Purpose 
