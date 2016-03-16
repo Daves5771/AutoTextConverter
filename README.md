@@ -2,8 +2,7 @@
 Auto Text Converter Source Code
 1.	Introduction
 1.1	Purpose 
-The Auto Text Converter is a powerful search-and-replace tool for Microsoft Word Documents.  
-It utilizes regular expressions, a feature missing in standard MS Office installations, as the heart of its search-and-replace engine.
+The Auto Text Converter is a powerful search-and-replace tool for Microsoft Word Documents. It utilizes regular expressions, a feature missing in standard MS Office installations, as the heart of its search-and-replace engine.
 With this application one can accomplish such tasks as capturing all of the URLs in a document, converting words of British spelling 
 into their American equivalents and vice-versa. The application comes with  number of pluggins for text validation and replacements.
 New plugins can be written and added to the plugins directory.
