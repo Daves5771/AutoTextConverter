@@ -1,5 +1,6 @@
 # AutoTextConverter
 Auto Text Converter Source Code
+
 1.	Introduction
 
 1.1	Purpose 
@@ -23,6 +24,7 @@ This document is intended for developers
 Before running the application please read, understand, and agree to the following:
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE SaelSoft or David Saelman BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 The following must be present on your PC in order to run the application:
 
 •	Operating System: WIN XP SP3, VISTA, Windows 8, 8.1, 10
@@ -38,6 +40,7 @@ Below is a picture of the main application GUI:
 
 
 The tool bar shows the following function buttons (from left to right)
+
 Open file
 Save file
 Close file
@@ -49,14 +52,18 @@ Step button
 Clear the Listview button
 
 
-
 3.	Operation
+
 3.1	Running the Application
+
 After starting the application, the user can choose one of several search profile XML files from the Operations combobox.  By going to the View->  After opening the file with the application, the user can press the <process> button and the application will search paragraph by paragraph for a match.  The processing can be paused or resumed by pressing the <pause> button.  Pressing the <stop> button will stop the processing. 
 
 
 3.2	Running Modes
-One can process the file in one of two mode: (1) Process mode, which will process the entire file automatically. (2) Step mode, which will stop at each change. The user then needs to hit the step button again and the program will proceed until the next change.  The user can change modes simply by pressing the <Pause> button and pressing the mode of their choice.  Below is a screenshot of a processed WORD document"
+
+One can process the file in one of two mode: (1) Process mode, which will process the entire file automatically. (2) Step mode, which will stop at each change. The user then needs to hit the step button again and the program will proceed until the next change.  The user can change modes simply by pressing the <Pause> button and pressing the mode of their choice.  
+
+Below is a screenshot of a processed WORD document"
 
 
 ![Alt text](ScreenShots/Fig2.PNG  "Figure 2 - Sample output")
