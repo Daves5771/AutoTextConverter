@@ -34,7 +34,7 @@ The following must be present on your PC in order to run the application:
 •	Microsoft WORD 2007, 2010, 2013, 2016
 
 
-1.	Introduction
+2.	Overview
 
 Below is a picture of the main application GUI:
 
