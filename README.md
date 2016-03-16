@@ -1,6 +1,5 @@
 # AutoTextConverter
 Auto Text Converter Source Code
-
 1.	Introduction
 1.1	Purpose 
 The Auto Text Converter is a powerful search-and-replace tool for Microsoft Word Documents.  
@@ -45,6 +44,7 @@ Stop button
 Step button
 Clear the Listview button
 
+![Alt text](ScreenShots/Fig1.PNG  "Figure 1 Sample GUI")
 
 3.	Operation
 3.1	Running the Application
@@ -53,6 +53,9 @@ After starting the application, the user can choose one of several search profil
 
 3.2	Running Modes
 One can process the file in one of two mode: (1) Process mode, which will process the entire file automatically. (2) Step mode, which will stop at each change. The user then needs to hit the step button again and the program will proceed until the next change.  The user can change modes simply by pressing the <Pause> button and pressing the mode of their choice.
+
+
+![Alt text](ScreenShots/Fig2.PNG  "Figure 2 - Sample output")
 
 4.	Making Custom Searches and Replacements
 The user can create his own XML profiles for custom searches and replacements.  In this version, the user must manually create the XML file.  Existing files can be used as a template or starting point.  Below is a description of the XML format :
