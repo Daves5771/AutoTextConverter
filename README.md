@@ -1,7 +1,7 @@
 # AutoTextConverter
 Auto Text Converter Source Code
 ![Alt text](https://github.com/Daves5771/AutoTextConverter/tree/master/ScreenShots/Fig1.png?raw=true "Figure 1")
-![Alt text](/ScreenShots/Fig2.png?raw=true "Figure 2")
+![Alt text](ScreenShots/Fig2.png  "Figure 2")
 1.	Introduction
 1.1	Purpose 
 The Auto Text Converter is a powerful search-and-replace tool for Microsoft Word Documents.  
