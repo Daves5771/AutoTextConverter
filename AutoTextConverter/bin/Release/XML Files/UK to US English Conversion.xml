@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0"?>
 <Searches>
+  <Header>
+    <Product>TextFilter</Product>
+    <ProfileOwner>David Saelman</ProfileOwner>
+    <CreationDate>March 16, 2016</CreationDate>
+    <ProfileVersion>1.0</ProfileVersion>
+    <ProfileDescription>Performs dialetic translation from British to US English</ProfileDescription>
+    <ProfileHistory />
+  </Header>
   <Search RegEx= "([A-Z|a-z]*(?i)tres?\b(?=\W))">
     <Identifier>Case Insensitve - matches litre, theatres, centre</Identifier>
     <FindColor>Teal</FindColor>
