@@ -82,10 +82,10 @@
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.testRegularExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.commitAllChangesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.resultsContextMenu.SuspendLayout();
@@ -173,7 +173,7 @@
             this.btnFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(23, 22);
-            this.btnFind.Text = "btnFind";
+            this.btnFind.Text = "Process";
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnPause
@@ -193,7 +193,7 @@
             this.btnStop.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(23, 22);
-            this.btnStop.Text = "btnStop";
+            this.btnStop.Text = "Stop";
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // btnStep
@@ -504,6 +504,8 @@
             // 
             // testRegularExpressionToolStripMenuItem
             // 
+            this.testRegularExpressionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("testRegularExpressionToolStripMenuItem.Image")));
+            this.testRegularExpressionToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.testRegularExpressionToolStripMenuItem.Name = "testRegularExpressionToolStripMenuItem";
             this.testRegularExpressionToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.testRegularExpressionToolStripMenuItem.Text = "Test Regular Expression ...";
@@ -515,6 +517,18 @@
             this.commitAllChangesToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.commitAllChangesToolStripMenuItem.Text = "Commit All Changes";
             this.commitAllChangesToolStripMenuItem.Click += new System.EventHandler(this.commitAllToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(206, 6);
+            // 
+            // preferencesToolStripMenuItem
+            // 
+            this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.preferencesToolStripMenuItem.Text = "Preferences ...";
+            this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -530,18 +544,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(206, 6);
-            // 
-            // preferencesToolStripMenuItem
-            // 
-            this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.preferencesToolStripMenuItem.Text = "Preferences ...";
-            this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
             // 
             // MainForm
             // 

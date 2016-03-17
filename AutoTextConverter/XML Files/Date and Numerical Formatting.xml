@@ -23,7 +23,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>NumericDateValidator.dll</PlugInName>
-      <PlugInFunction>ValidateUSDate</PlugInFunction>
+      <PlugInValidationFunction>ValidateUSDate</PlugInValidationFunction>
       <PlugInFormatFunction>GetDateMatch_1</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>    
@@ -37,7 +37,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>NumericDateValidator.dll</PlugInName>
-      <PlugInFunction>ValidateUSDate</PlugInFunction>
+      <PlugInValidationFunction>ValidateUSDate</PlugInValidationFunction>
       <PlugInFormatFunction>GetDateMatch_3</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -51,7 +51,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>NumericDateValidator.dll</PlugInName>
-      <PlugInFunction>ValidateUSDate</PlugInFunction>
+      <PlugInValidationFunction>ValidateUSDate</PlugInValidationFunction>
       <PlugInFormatFunction>GetDateMatch_2</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>    
@@ -65,7 +65,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>NumericDateValidator.dll</PlugInName>
-      <PlugInFunction>ValidateUSDate</PlugInFunction>
+      <PlugInValidationFunction>ValidateUSDate</PlugInValidationFunction>
       <PlugInFormatFunction>GetDateMatch_2</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -79,7 +79,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>NumericDateValidator.dll</PlugInName>
-      <PlugInFunction>ValidateEuropeanDate</PlugInFunction>
+      <PlugInValidationFunction>ValidateEuropeanDate</PlugInValidationFunction>
       <PlugInFormatFunction>none</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -93,7 +93,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>NumericDateValidator.dll</PlugInName>
-      <PlugInFunction>ValidateUSDate</PlugInFunction>
+      <PlugInValidationFunction>ValidateUSDate</PlugInValidationFunction>
       <PlugInFormatFunction>GetDateMatch_1</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -107,7 +107,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>SSN_Validator.dll</PlugInName>
-      <PlugInFunction>ValidateSSN</PlugInFunction>
+      <PlugInValidationFunction>ValidateSSN</PlugInValidationFunction>
       <PlugInFormatFunction>GetSSNMatch</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>    

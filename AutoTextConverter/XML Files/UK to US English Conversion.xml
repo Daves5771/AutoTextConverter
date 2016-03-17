@@ -14,7 +14,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
-      <PlugInFunction>none</PlugInFunction>
+      <PlugInValidationFunction>none</PlugInValidationFunction>
       <PlugInFormatFunction>Convert_tre_to_ter_Word</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -28,7 +28,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
-      <PlugInFunction>none</PlugInFunction>
+      <PlugInValidationFunction>none</PlugInValidationFunction>
       <PlugInFormatFunction>Convert_ise_to_ize_Word</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -42,7 +42,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
-      <PlugInFunction>none</PlugInFunction>
+      <PlugInValidationFunction>none</PlugInValidationFunction>
       <PlugInFormatFunction>Convert_isation_to_ization_Word</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -56,7 +56,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
-      <PlugInFunction>Validate_OUR_WORD</PlugInFunction>
+      <PlugInValidationFunction>Validate_OUR_WORD</PlugInValidationFunction>
       <PlugInFormatFunction>Convert_our_to_or_Word</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -70,7 +70,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>none</PlugInName>
-      <PlugInFunction>none</PlugInFunction>
+      <PlugInValidationFunction>none</PlugInValidationFunction>
       <PlugInFormatFunction>none</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -84,7 +84,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
-      <PlugInFunction>none</PlugInFunction>
+      <PlugInValidationFunction>none</PlugInValidationFunction>
       <PlugInFormatFunction>Convert_amme_to_am_Word</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -98,7 +98,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
-      <PlugInFunction>none</PlugInFunction>
+      <PlugInValidationFunction>none</PlugInValidationFunction>
       <PlugInFormatFunction>Convert_ence_to_ense_Word</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -112,7 +112,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
-      <PlugInFunction>none</PlugInFunction>
+      <PlugInValidationFunction>none</PlugInValidationFunction>
       <PlugInFormatFunction>Convert_logue_to_log_Word</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
@@ -126,7 +126,7 @@
     <Action>replace</Action>
     <Plugin Description="yes">
       <PlugInName>UK_TO_US_EnglishConverter.dll</PlugInName>
-      <PlugInFunction>none</PlugInFunction>
+      <PlugInValidationFunction>none</PlugInValidationFunction>
       <PlugInFormatFunction>Convert_UK_DATE_to_US_DATE</PlugInFormatFunction>
       <Reserved>0</Reserved>
     </Plugin>
