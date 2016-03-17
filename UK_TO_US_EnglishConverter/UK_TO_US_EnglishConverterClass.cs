@@ -24,7 +24,8 @@ namespace UK_TO_US_EnglishConverter
 
             int treIndex = (ukWord).LastIndexOf(treString);
             StringBuilder sb = new StringBuilder(ukWord);
-            sb.Replace(treString,terString,treIndex,treString.Length);
+            if (treIndex != -1)
+                sb.Replace(treString,terString,treIndex,treString.Length);
             return sb.ToString();
         }
 
@@ -47,7 +48,8 @@ namespace UK_TO_US_EnglishConverter
 
             int ourIndex = (ukWord).LastIndexOf(ourString);
             StringBuilder sb = new StringBuilder(ukWord);
-            sb.Replace(ourString, orString, ourIndex, ourString.Length);
+            if (ourIndex != -1)
+                sb.Replace(ourString, orString, ourIndex, ourString.Length);
             return sb.ToString();
         }
 
@@ -90,7 +92,8 @@ namespace UK_TO_US_EnglishConverter
 
             int treIndex = (ukWord).LastIndexOf(treString);
             StringBuilder sb = new StringBuilder(ukWord);
-            sb.Replace(treString, terString, treIndex, treString.Length);
+            if (treIndex != -1)
+                sb.Replace(treString, terString, treIndex, treString.Length);
             return sb.ToString();
          }
 
@@ -111,7 +114,8 @@ namespace UK_TO_US_EnglishConverter
 
             int treIndex = (ukWord).LastIndexOf(treString);
             StringBuilder sb = new StringBuilder(ukWord);
-            sb.Replace(treString, terString, treIndex, treString.Length);
+            if (treIndex != -1)
+                sb.Replace(treString, terString, treIndex, treString.Length);
             return sb.ToString();
         }
 
@@ -132,7 +136,8 @@ namespace UK_TO_US_EnglishConverter
 
             int treIndex = (ukWord).LastIndexOf(treString);
             StringBuilder sb = new StringBuilder(ukWord);
-            sb.Replace(treString, terString, treIndex, treString.Length);
+            if (treIndex != -1)
+                sb.Replace(treString, terString, treIndex, treString.Length);
             return sb.ToString();
         }
         public string Convert_amme_to_am_Word(Match matchResult)
@@ -157,7 +162,8 @@ namespace UK_TO_US_EnglishConverter
 
             int ammeIndex = (ukWord).LastIndexOf(ammeString);
             StringBuilder sb = new StringBuilder(ukWord);
-            sb.Replace(ammeString, amString, ammeIndex, ammeString.Length);
+            if (ammeIndex != -1)
+                sb.Replace(ammeString, amString, ammeIndex, ammeString.Length);
             return sb.ToString();
         }
 
@@ -183,7 +189,8 @@ namespace UK_TO_US_EnglishConverter
 
             int ammeIndex = (ukWord).LastIndexOf(logueString);
             StringBuilder sb = new StringBuilder(ukWord);
-            sb.Replace(logueString, amString, ammeIndex, logueString.Length);
+            if (ammeIndex != -1)
+                sb.Replace(logueString, amString, ammeIndex, logueString.Length);
             return sb.ToString();
         }
 
@@ -204,7 +211,8 @@ namespace UK_TO_US_EnglishConverter
 
             int enceIndex = (ukWord).LastIndexOf(enceString);
             StringBuilder sb = new StringBuilder(ukWord);
-            sb.Replace(enceString, enseString, enceIndex, enseString.Length);
+            if (enceIndex != -1)
+                sb.Replace(enceString, enseString, enceIndex, enseString.Length);
             return sb.ToString();
         }
         public string Convert_UK_DATE_to_US_DATE(Match matchResult)
